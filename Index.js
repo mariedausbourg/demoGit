@@ -1,127 +1,119 @@
+document.addEventListener('DOMContentLoaded', () => {
+  const savedAffichage = localStorage.getItem("affichage") || "liste";
 
-// Les infos dans le tableau
+  const radio = document.querySelector(`input[name="affichage"][value="${savedAffichage}"]`);
+  if (radio) radio.checked = true;
 
-document.addEventListener('DOMContentLoaded', function() {
   afficherPromo();
-});
 
-async function afficherPromo() {
-  try {
-    const reponse = await fetch('promo.json');
-    const promo = await reponse.json();
-    console.log('Promo chargée:', promo);
-    
-    // Récupérer le tableau
-    const tbody = document.querySelector('tbody');
-    
-    // Vider le Lorem atsum
-    tbody.innerHTML = '';
-    
-    // Parcour les apprenants
-    promo.apprenants.forEach(apprenant => {
-      const tr = document.createElement('tr');
-      tr.innerHTML = `
-        <td>${apprenant.nom}</td>
-        <td>${apprenant.prenom}</td>
-        <td>${apprenant.ville}</td>
-        <td><a href="#">Détail</a></td>
-      `;
-      tbody.appendChild(tr);
+  document.querySelectorAll('input[name="affichage"]').forEach(radio => {
+    radio.addEventListener('change', function () {
+      localStorage.setItem("affichage", this.value);
+      afficherPromo();
     });
-    
-  } catch (final) {
-
-    const tbody = document.querySelector('tbody');
-    
-  }
-}
-
-document.addEventListener('DOMContentLoaded', function() {
-  afficherPromo();
-  
-  // changement de type d'affichage
-  const radios = document.querySelectorAll('input[name="affichage"]');
-  radios.forEach(radio => {
-    radio.addEventListener('change', afficherPromo);
   });
 });
 
 async function afficherPromo() {
   try {
-    const reponse = await fetch('promo.json');
-    const promo = await reponse.json();
-    console.log('Promo chargée:', promo);
-    
-    // Vérifie quel type d'affichage est sélectionné
+    const response = await fetch('promo.json');
+    const promo = await response.json();
 
-    const affichageListe = document.querySelector('input[name="affichage"]:checked').nextSibling.textContent.trim() === 'Liste';
-    
-    if (affichageListe) {
+    const affichage = document.querySelector('input[name="affichage"]:checked').value;
+
+    if (affichage === "liste") {
       afficherListe(promo.apprenants);
     } else {
       afficherCartes(promo.apprenants);
     }
-    
+
   } catch (error) {
-    console.error('Erreur lors du chargement de promo.json:', error);
+    console.error("Erreur chargement promo.json", error);
   }
 }
 
+//  liste  //
 function afficherListe(apprenants) {
-  const tbody = document.querySelector('tbody');
-  const main = document.querySelector('main');
-  
-  // Afficher le tableau, cacher les cartes
   document.querySelector('.table-responsive').style.display = 'block';
+
   const cartesContainer = document.querySelector('.cartes-container');
   if (cartesContainer) cartesContainer.style.display = 'none';
-  
-  // Vider et remplir le tableau
+
+  const tbody = document.querySelector('tbody');
   tbody.innerHTML = '';
+
   apprenants.forEach(apprenant => {
     const tr = document.createElement('tr');
     tr.innerHTML = `
       <td>${apprenant.nom}</td>
       <td>${apprenant.prenom}</td>
       <td>${apprenant.ville}</td>
-      <td><a href="#">Détail</a></td>
+      <td>
+        <button class="btn btn-sm btn-outline-dark detail-btn" data-id="${apprenant.id}">
+          Détail
+        </button>
+      </td>
     `;
     tbody.appendChild(tr);
+
+    // ligne détail cachée
+    const detailTr = document.createElement('tr');
+    detailTr.classList.add('d-none');
+    detailTr.innerHTML = `
+      <td colspan="4" class="bg-light">
+        <strong>Anecdote :</strong> ${apprenant.anecdotes}
+      </td>
+    `;
+    tbody.appendChild(detailTr);
+
+    tr.querySelector('.detail-btn').addEventListener('click', () => {
+      detailTr.classList.toggle('d-none');
+    });
   });
 }
 
+//  cardes //
 function afficherCartes(apprenants) {
-  const main = document.querySelector('main');
-  
-  // Cacher le tableau
   document.querySelector('.table-responsive').style.display = 'none';
-  
-  // Créer ou récupérer le conteneur des cartes
+
   let cartesContainer = document.querySelector('.cartes-container');
   if (!cartesContainer) {
     cartesContainer = document.createElement('div');
-    cartesContainer.className = 'cartes-container row g-3';
-    main.appendChild(cartesContainer);
+    cartesContainer.className = 'cartes-container row g-3 mt-3';
+    document.querySelector('main').appendChild(cartesContainer);
   }
-  
+
   cartesContainer.style.display = 'flex';
   cartesContainer.innerHTML = '';
-  
-  // Créer les cartes
+
   apprenants.forEach(apprenant => {
-    const carte = document.createElement('div');
-    carte.className = 'col-md-4 col-lg-3';
-    carte.innerHTML = `
-      <div class="card shadow-sm h-100">
+    const col = document.createElement('div');
+    col.className = 'col-md-4 col-lg-3';
+
+    col.innerHTML = `
+      <div class="card h-100 shadow-sm">
         <div class="card-body text-center">
-          <h5 class="card-title">${apprenant.prenom} ${apprenant.nom}</h5>
-          <p class="card-text">
-            <strong>Ville:</strong> ${apprenant.ville}
-          </p>
-          <a href="#" class="btn btn-outline-dark btn-sm">Détail</a>
+          <h5>${apprenant.prenom} ${apprenant.nom}</h5>
+          <p><strong>Ville :</strong> ${apprenant.ville}</p>
+
+          <button class="btn btn-outline-dark btn-sm detail-btn">
+            Détail
+          </button>
+
+          <div class="mt-2 d-none detail-content">
+            <p class="small">${apprenant.anecdotes}</p>
+          </div>
         </div>
       </div>
     `;
-    cartesContainer.appendChild(carte);
+
+    const btn = col.querySelector('.detail-btn');
+    const detail = col.querySelector('.detail-content');
+
+    btn.addEventListener('click', () => {
+      detail.classList.toggle('d-none');
+    });
+
+    cartesContainer.appendChild(col);
   });
 }

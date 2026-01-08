@@ -6,12 +6,17 @@
 <title>Cartes</title>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
 <link href="style.css" rel="stylesheet">
+ <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+     integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+     crossorigin=""/>
+      <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+     integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+     crossorigin=""></script>
+ 
 </head>
 
 
-<body class="bg-white text-dark">
-
-    <!-- entete -->
+<body>
 
 <header class="container-fluid px-4 py-2">
   <div class="row align-items-center">
@@ -40,7 +45,13 @@
 
   </div>
 </header>
-<body>
-    <h1>Cartes</h1>
+
+    <h1 class="col text-center mt-5">Cartes</h1>
+
+     <div id="map"></div>
+     
+
 </body>
+  <script src="cartes.js"></script>  
+<script src="theme.js"></script>
 </html>

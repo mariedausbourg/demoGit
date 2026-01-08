@@ -92,3 +92,75 @@ h3 {
     margin-left: 0 !important;
   }
 }
+
+
+/* THEME CLAIR */
+.theme-clair {
+  background-color: #ffffff;
+  color: #212529;
+}
+
+/* THEME SOMBRE */
+.theme-sombre {
+  background-color: rgb(31, 40, 52);
+  color: #f1f1f1;
+}
+
+/* Header */
+.theme-sombre header {
+  background-color:  rgb(35, 46, 61);
+}
+
+/* Cards */
+.theme-sombre .card {
+  background-color: #1e1e1e;
+  color: #f1f1f1;
+  border-color: #333;
+}
+
+/* Tableau */
+.theme-sombre table {
+  background-color: #1e1e1e;
+  color: #f1f1f1;
+}
+
+.theme-sombre thead {
+  background-color: #2a2a2a;
+}
+
+.theme-sombre button {
+  color: rgb(35, 46, 61);
+  background-color: rgb(175, 180, 211);
+}
+
+.theme-sombre .btn-outline-dark {
+    color: rgb(35, 46, 61);
+  background-color: rgb(186, 175, 211);
+}
+
+.theme-sombre .table {
+  --bs-table-bg: rgb(186, 175, 211) !important;
+  --bs-table-striped-bg: rgb(200, 190, 220) !important;
+  --bs-table-color: rgb(35, 46, 61) !important;
+  color: rgb(35, 46, 61) !important;
+}
+
+.theme-sombre .table-secondary {
+  --bs-table-bg: rgb(150, 140, 180) !important;
+  background-color: rgb(150, 140, 180) !important;
+  color: rgb(35, 46, 61) !important;
+}
+
+.theme-sombre .table td,
+.theme-sombre .table th {
+  color: rgb(35, 46, 61) !important;
+  border-color: rgb(100, 90, 120) !important;
+}
+
+
+#map {
+  height: 70vh; 
+  width: 70%;
+  margin: 20px auto;
+  border-radius: 8px;
+}

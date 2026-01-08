@@ -6,11 +6,11 @@
 <title>Promo page d'accueil</title>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
 <link href="style.css" rel="stylesheet">
-<script src="Index.js"></script>
+
 </head>
 
 
-<body class="bg-white text-dark">
+<body class>
 
     <!-- entete -->
 
@@ -42,16 +42,13 @@
   </div>
 </header>
     <!-- types affichage -->
-   <div class="type-affichage d-flex justify-content-end align-items-center gap-3 mt-2">
+<div class="type-affichage d-flex justify-content-end align-items-center gap-3 mt-2">
   <h4 class="m-0 fs-6">Type affichage</h4>
-
   <label class="form-check-label">
-    <input class="form-check-input me-1" type="radio" name="affichage" checked>
-    Liste
+    <input class="form-check-input me-1" type="radio" name="affichage" value="liste" checked> Liste
   </label>
   <label class="form-check-label">
-    <input class="form-check-input me-1" type="radio" name="affichage">
-    Cartes
+    <input class="form-check-input me-1" type="radio" name="affichage" value="cartes"> Cartes
   </label>
 </div>
 
@@ -155,5 +152,7 @@
        </div>
 
 </main>
+<script src="index.js"></script>
+<script src="theme.js"></script>
 </body>
 </html>
