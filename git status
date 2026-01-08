@@ -1,0 +1,23 @@
+[33mcommit ea18ce1352abbee4b18a2d255a92f50cfef83696[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m)[m
+Author: Marie d'Ausbourg <marie.dausbourg2025@campus-eni.fr>
+Date:   Tue Jan 6 19:00:37 2026 +0100
+
+    ADD : index.html complet + son css
+
+[33mcommit d56016284c8f53322b69b976877c5cd7fa21bf75[m[33m ([m[1;31morigin/main[m[33m)[m
+Author: Marie d'Ausbourg <marie.dausbourg2025@campus-eni.fr>
+Date:   Mon Jan 5 15:46:04 2026 +0100
+
+    ADD : ajout des fichiers informations.html et préférences.html et cartes.html et logo.png et avatar.png
+
+[33mcommit 49a381eee5d7eab56764e23770179c2da46632a1[m
+Author: Marie d'Ausbourg <marie.dausbourg2025@campus-eni.fr>
+Date:   Mon Jan 5 10:16:47 2026 +0100
+
+    ADD : ajout des fichiers index.html et style.css
+
+[33mcommit e9506bcb285a5a2cd57688f53e69d359d732333a[m
+Author: Marie d'Ausbourg <marie.dausbourg2025@campus-eni.fr>
+Date:   Mon Jan 5 10:07:18 2026 +0100
+
+    INIT : commit initial avec le fichier .gitignore
