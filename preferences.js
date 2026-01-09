@@ -1,11 +1,11 @@
 document.addEventListener("DOMContentLoaded", () => {
   const form = document.getElementById("preferences-form");
   
-  // Charger thème au démarrage
+  // Charger thème au démarrage //
   const savedTheme = localStorage.getItem("theme") || "clair";
   document.body.classList.add(`theme-${savedTheme}`);
   
-  // Dropdown thème
+  // Dropdown thème //
   document.querySelectorAll(".dropdown-item").forEach(item => {
     item.addEventListener("click", (e) => {
       e.preventDefault();
@@ -15,11 +15,11 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
   
-  // Restaure thème actif
+  // Restaure thème actif //
   document.querySelector(`[data-theme="${savedTheme}"]`)?.classList.add("active");
   document.querySelector(".dropdown-toggle").textContent = savedTheme === 'clair' ? 'Clair' : 'Sombre';
   
-  // Submit
+  // Submit  //
    form.addEventListener("submit", (e) => {
     e.preventDefault();
     const theme = document.querySelector(".dropdown-item.active")?.dataset.theme || "clair";

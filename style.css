@@ -93,6 +93,12 @@ h3 {
   }
 }
 
+/* les liens dans infos */
+.card-body a {
+  color: #212529;
+  text-decoration: underline;
+}
+
 
 /* THEME CLAIR */
 .theme-clair {

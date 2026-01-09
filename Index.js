@@ -56,7 +56,7 @@ function afficherListe(apprenants) {
     `;
     tbody.appendChild(tr);
 
-    // ligne détail cachée
+    // ligne détail cachée //
     const detailTr = document.createElement('tr');
     detailTr.classList.add('d-none');
     detailTr.innerHTML = `
